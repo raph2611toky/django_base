@@ -11,14 +11,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 IP_ADDR, PORT = get_server_settings()
 
-SECRET_KEY = 'r4ph43l!s3cr3t_.sp(v70*_=3r58j^bpe7gitr7j((!hev&b17h=8ssdm8#$^cv6d'
+SECRET_KEY = "lrnEKgg|_a:(sY_{bEDgQ_hJqawQ;En:xx&,PBQ;u?o,KR'B-bh)_V,HkTmAS/-XD;"
 
 DEBUG = True
 
 ALLOWED_HOSTS = [IP_ADDR, '127.0.0.1', 'localhost']
 
 LOCAL_APPS = [
-    'apps.users.apps.UsersConfig',
+    'apps.user.apps.UserConfig',
 ]
 
 THIRD_APPS = [
@@ -26,6 +26,7 @@ THIRD_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'drf_yasg',
 ]
 
 INSTALLED_APPS = [
@@ -190,3 +191,15 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CORS_ALLOW_PRIVATE_NETWORK = True
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': "Ajoutez 'Bearer <votre_token>' dans le champ d'authentification",
+        }
+    },
+    'USE_SESSION_AUTH': False,
+}
